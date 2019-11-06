@@ -1,3 +1,13 @@
+//Find all customers that live in London, Madrid, or Brazil
+
+//SELECT * FROM Customers 
+// WHERE city = 'London'
+//  OR city = 'Madrid'
+//   OR country = 'Brazil'
+
+
+
+
 const db = require('../data/data-config');
 
 module.exports = {
@@ -10,11 +20,15 @@ module.exports = {
 };
 
 function find(){
-
     return db('schemes')
 };
+
 function findById(id){
+    return db('schemes')
+    .where({'id' : id})
+    .first();
 };
+
 function findSteps(id){};
 function add(scheme){};
 function update(changes, id){};
