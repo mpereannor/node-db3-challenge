@@ -67,13 +67,17 @@ function add(scheme){
        return findById(id[0]);
    });    
 };
-function update(changes, id){};
-function remove(id){};
 
+function update(changes, id){ 
+    return db(changes, id)
+    .where({id})
+    .update(changes)
+    .then(count => { 
+        return findById(id)
+    })
+}
 
-// function getPosts(userId) {
-//   return db('posts as p')
-//     .join('users as u', 'u.id', 'p.user_id')
-//     .select('p.id', 'u.username', 'p.contents')
-//     .where({ 'u.id': userId });
-// }
+function remove(id) {
+    return db('schemes')
+    .where('id', id).del()
+}
