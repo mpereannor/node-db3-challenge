@@ -29,7 +29,37 @@ function findById(id){
     .first();
 };
 
-function findSteps(id){};
+function findSteps(id) {
+
+    /*
+    SELECT  
+        st.id as stepId,
+        sc.scheme_name as schemeName,
+        st.step_number as stepNumber,
+        st.instructions as instructions
+    FROM 
+        steps as st
+    JOIN 
+        schemes as sc 
+    ON
+        sc.id = st.scheme_id
+    WHERE  
+        st.scheme_id = id
+    ORDER BY  
+    st.step_number;
+    */
+
+    return db('steps as st')
+    .join('schemes as sc', 'sc.id', 'st.scheme_id')
+    .select(
+        'st.id as stepId',
+        'sc.scheme_name as schemeName',
+        'st.step_number as stepNumber', 'st.instructions as instructions'
+        )
+    .where('st.scheme_id', id)
+    .orderBy('st.step_number', 'asc')
+}
+
 function add(scheme){};
 function update(changes, id){};
 function remove(id){};
