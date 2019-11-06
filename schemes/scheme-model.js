@@ -60,7 +60,9 @@ function findSteps(id) {
     .orderBy('st.step_number', 'asc')
 }
 
-function add(scheme){};
+function add(scheme){
+    scheme 
+};
 function update(changes, id){};
 function remove(id){};
 
