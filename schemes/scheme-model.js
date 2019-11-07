@@ -69,12 +69,9 @@ function add(scheme){
 };
 
 function update(changes, id){ 
-    return db(changes, id)
+    return db('schemes')
     .where({id})
     .update(changes)
-    .then(count => { 
-        return findById(id)
-    })
 }
 
 function remove(id) {
